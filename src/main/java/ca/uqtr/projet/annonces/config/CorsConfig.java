@@ -14,11 +14,7 @@ public class CorsConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         // Autorise l'app Angular locale ET la version déployée Firebase
-        configuration.setAllowedOrigins(List.of(
-                "http://localhost:4200",
-                "https://lokaquebec.web.app",
-                "https://angularv3.netlify.app"
-        ));
+        configuration.setAllowedOriginPatterns(List.of("https://*.netlify.app", "http://localhost:*"));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true);
