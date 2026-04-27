@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+    <changeSet id="002-create-annonce-photos" author="equipe-inf1013">
+        <createTable tableName="annoncephotos">
+            <column name="annonce_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="photos" type="VARCHAR(500)"/>
+        </createTable>
+
+        <addForeignKeyConstraint
+                baseTableName="annoncephotos"
+                baseColumnNames="annonce_id"
+                referencedTableName="annonces"
+                referencedColumnNames="id"
+                constraintName="fk_annoncephotos_annonce"/>
+    </changeSet>
+
+</databaseChangeLog>
