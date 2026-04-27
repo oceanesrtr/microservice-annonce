@@ -1,0 +1,128 @@
+### =========================
+### 1. Création d'une annonce
+### attendu: 201 Created
+### =========================
+POST http://localhost:8082/api/annonces?ownerId=1
+Content-Type: application/json
+
+{
+  "titre": "Annonce test owner 1",
+  "descriptionCourte": "Test owner",
+  "descriptionLongue": "Annonce pour test des permissions",
+  "montant": 900.0,
+  "dateDisponibilite": "2026-06-01",
+  "adresse": "123 Rue A"
+}
+
+### =========================
+### 2. Voir toutes les annonces actives
+### attendu: 200 OK
+### =========================
+GET http://localhost:8082/api/annonces
+
+### =========================
+### 3. Voir mes annonces
+### attendu: 200 OK
+### =========================
+GET http://localhost:8082/api/annonces/me?ownerId=1
+
+### =========================
+### 4. Voir une annonce par id
+### remplace 15 par un id existant
+### attendu: 200 OK
+### =========================
+GET http://localhost:8082/api/annonces/15
+
+### =========================
+### 5. Modifier une annonce
+### remplace 15 par un id existant appartenant à ownerId=1
+### attendu: 200 OK
+### =========================
+PUT http://localhost:8082/api/annonces/15?ownerId=1
+Content-Type: application/json
+
+{
+  "titre": "Annonce modifiée owner 1",
+  "descriptionCourte": "Annonce modifiée",
+  "descriptionLongue": "Annonce modifiée pour test update",
+  "montant": 950.0,
+  "dateDisponibilite": "2026-07-01",
+  "adresse": "456 Rue B"
+}
+
+### =========================
+### 6. Désactiver une annonce
+### remplace 15 par un id existant appartenant à ownerId=1
+### attendu: 200 OK
+### =========================
+PUT http://localhost:8082/api/annonces/15/deactivate?ownerId=1
+
+### =========================
+### 7. Réactiver une annonce
+### remplace 15 par un id existant appartenant à ownerId=1
+### attendu: 200 OK
+### =========================
+PUT http://localhost:8082/api/annonces/15/activate?ownerId=1
+
+### =========================
+### 8. Test permission refusée
+### même annonce, mauvais ownerId
+### attendu: 403 Forbidden
+### =========================
+DELETE http://localhost:8082/api/annonces/15?ownerId=2
+
+### =========================
+### 9. Supprimer avec le bon ownerId
+### attendu: 204 No Content
+### =========================
+DELETE http://localhost:8082/api/annonces/15?ownerId=1
+
+### =========================
+### 10. Vérifier après suppression
+### attendu: 404 Not Found
+### =========================
+GET http://localhost:8082/api/annonces/15
+
+### =========================
+### 11. Test validation - titre vide / adresse vide / montant négatif
+### attendu: 400 Bad Request
+### =========================
+POST http://localhost:8082/api/annonces?ownerId=1
+Content-Type: application/json
+
+{
+  "titre": "",
+  "descriptionCourte": "Test",
+  "descriptionLongue": "Test validation",
+  "montant": -10.0,
+  "dateDisponibilite": "2026-06-01",
+  "adresse": ""
+}
+
+### =========================
+### 12. Test ressource inexistante
+### attendu: 404 Not Found
+### =========================
+GET http://localhost:8082/api/annonces/999
+
+### =========================
+### 13. Test update sur ressource inexistante
+### attendu: 404 Not Found
+### =========================
+PUT http://localhost:8082/api/annonces/999?ownerId=1
+Content-Type: application/json
+
+{
+  "titre": "Test inexistant",
+  "descriptionCourte": "Test",
+  "descriptionLongue": "Test",
+  "montant": 100.0,
+  "dateDisponibilite": "2026-06-01",
+  "adresse": "Adresse test"
+}
+
+### =========================
+### 14. Test delete sur ressource inexistante
+### attendu: 404 Not Found
+### =========================
+DELETE http://localhost:8082/api/annonces/999?ownerId=1

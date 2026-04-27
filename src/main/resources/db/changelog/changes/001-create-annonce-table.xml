@@ -1,0 +1,25 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+        http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="001-create-annonce-table" author="yimin">
+        <createTable tableName="annonces">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="titre" type="VARCHAR(255)"/>
+            <column name="description_courte" type="VARCHAR(500)"/>
+            <column name="description_longue" type="TEXT"/>
+            <column name="montant" type="DOUBLE"/>
+            <column name="date_disponibilite" type="DATE"/>
+            <column name="adresse" type="VARCHAR(255)"/>
+            <column name="active" type="BOOLEAN"/>
+            <column name="owner_id" type="BIGINT"/>
+            <column name="created_at" type="TIMESTAMP"/>
+            <column name="updated_at" type="TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
