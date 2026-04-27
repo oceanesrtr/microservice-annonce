@@ -8,5 +8,5 @@
     <include file="db/changelog/changes/001-create-annonce-table.xml"/>
     <include file="db/changelog/changes/002-add-photos-table.xml"/>
     <include file="classpath:/db/changelog/changes/002-create-annonce-photos.xml"/>
-
+    <include file="classpath:/db/changelog/changes/003-fix-annoncephotos-column.xml"/>
 </databaseChangeLog>

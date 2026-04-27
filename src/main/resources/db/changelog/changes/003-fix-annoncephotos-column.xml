@@ -1,0 +1,9 @@
+<changeSet id="003-fix-annoncephotos-column" author="equipe-inf1013">
+    <dropTable tableName="annoncephotos"/>
+    <createTable tableName="annoncephotos">
+        <column name="annonceid" type="BIGINT">
+            <constraints nullable="false"/>
+        </column>
+        <column name="photos" type="VARCHAR(500)"/>
+    </createTable>
+</changeSet>
