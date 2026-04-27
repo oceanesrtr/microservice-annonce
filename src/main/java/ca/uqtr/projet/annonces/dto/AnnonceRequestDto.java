@@ -1,6 +1,7 @@
 // src/main/java/ca/uqtr/projet/annonces/dto/AnnonceRequestDto.java
 package ca.uqtr.projet.annonces.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDate;
@@ -18,6 +19,7 @@ public class AnnonceRequestDto {
     private String descriptionLongue;
 
     @Min(value = 0, message = "Le montant doit être positif ou nul")
+    @JsonProperty("mensualite")   // ← accepte "mensualite" depuis Angular
     private Double montant;
 
     private LocalDate dateDisponibilite;
