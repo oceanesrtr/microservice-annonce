@@ -1,6 +1,8 @@
 // src/main/java/ca/uqtr/projet/annonces/dto/AnnonceResponseDto.java
 package ca.uqtr.projet.annonces.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +13,7 @@ public class AnnonceResponseDto {
     private String titre;
     private String descriptionCourte;
     private String descriptionLongue;
+    @JsonProperty("mensualite")
     private Double montant;
     private LocalDate dateDisponibilite;
     private String adresse;
