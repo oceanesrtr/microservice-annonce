@@ -127,8 +127,10 @@ public class AnnonceServiceImpl implements AnnonceService {
         dto.setAdresse(annonce.getAdresse());
         dto.setActive(annonce.getActive());
         dto.setOwnerId(annonce.getOwnerId());
+        dto.setConsultations(annonce.getConsultations() != null ? annonce.getConsultations() : 0);
         // inclure les photos dans la réponse
         dto.setPhotos(annonce.getPhotos() != null ? annonce.getPhotos() : List.of());
         return dto;
     }
 }
+

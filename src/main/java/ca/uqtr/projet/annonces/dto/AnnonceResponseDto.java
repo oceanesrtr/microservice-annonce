@@ -19,6 +19,8 @@ public class AnnonceResponseDto {
     private String adresse;
     private Boolean active;
     private Long ownerId;
+    private Integer consultations;
+
 
     private List<String> photos = new ArrayList<>();
 
@@ -55,4 +57,8 @@ public class AnnonceResponseDto {
 
     public List<String> getPhotos() { return photos; }
     public void setPhotos(List<String> photos) { this.photos = photos; }
+
+    public Integer getConsultations() { return consultations; }
+    public void setConsultations(Integer consultations) { this.consultations = consultations; }
+
 }

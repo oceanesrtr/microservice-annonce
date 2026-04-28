@@ -10,4 +10,5 @@
     <include file="classpath:/db/changelog/changes/002-create-annonce-photos.xml"/>
     <include file="classpath:/db/changelog/changes/003-fix-annoncephotos-column.xml"/>
     <include file="classpath:/db/changelog/changes/004-fix-photourl-column.xml"/>
+    <include file="classpath:/db/changelog/changes/005-add-consultations.xml"/>
 </databaseChangeLog>

@@ -41,6 +41,13 @@ public class Annonce {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
+    @Column(name = "consultations")
+    private Integer consultations = 0;
+
+    // + getter/setter
+    public Integer getConsultations() { return consultations; }
+    public void setConsultations(Integer consultations) { this.consultations = consultations; }
+
     @ElementCollection
     @CollectionTable(
             name = "annoncephotos",
